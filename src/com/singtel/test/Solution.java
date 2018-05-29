@@ -113,6 +113,28 @@ class Bird extends Animal {
 	
 }
 
+class Fish extends Bird{
+	
+}
+
+class Shark extends Fish {
+	public Shark(){
+		System.out.println("Sharks are large and grey");
+		System.out.println("Sharks eat other fish");
+	}
+}
+
+class ClownFish extends Fish {
+	public ClownFish(){
+		System.out.println("Clownfish are small and colourful (orange)");
+		System.out.println("Clownfish make jokes");
+	}
+}
+
+class Dolphin extends Bird {
+	
+}
+
 public class Solution {
 	public static void main(String[] args) {
 		Bird bird = new Bird();
@@ -125,8 +147,11 @@ public class Solution {
 		bird.sing("Parrot", "Cat");
 		bird.sing("Parrot", "Rooster");
 		
-		bird.sing("Fishes", null);
-		bird.walk("Fishes");
-		bird.swim("Fishes");
+		Fish fish = new Fish();
+		fish.sing("Fishes", null);
+		fish.walk("Fishes");
+		fish.swim("Fishes");
+		new Shark();
+		new ClownFish();
 	}
 }
