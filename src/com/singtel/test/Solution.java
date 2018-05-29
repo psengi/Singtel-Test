@@ -23,6 +23,10 @@ class Bird extends Animal {
 			System.out.println("A chicken cannot fly (assumption: its wings are clipped but ignore that)");
 			
 			break;
+		case "Rooster":
+			System.out.println("A rooster says: “Cock-a-doodle-doo”");
+			
+			break;
 		default:
 			break;
 		}
@@ -36,5 +40,6 @@ public class Solution {
 		bird.fly();
 		bird.sing("Duck");
 		bird.sing("Chicken");
+		bird.sing("Rooster");
 	}
 }
