@@ -10,6 +10,7 @@ class Animal {
 		switch (name) {
 		case "":
 			System.out.println("I am walking");
+			Solution.COUNT_WALK++;
 			break;
 
 		default:
@@ -23,11 +24,11 @@ class Animal {
 		switch (animalName) {
 		case "Dog":
 			System.out.println("Woof, woof");
-			
+			Solution.COUNT_SING++;
 			break;
 		case "Cat":
 			System.out.println("Meow");
-			
+			Solution.COUNT_SING++;
 			break;
 		default:
 			
@@ -45,9 +46,12 @@ class Bird extends Animal {
 			System.out.println("A chicken cannot fly (assumption: its wings are clipped but ignore that)");
 			
 			break;
-
+		case "Catterpillar":
+			System.out.println("Caterpilar cannot fly.");
+			break;	
 		default:
-			System.out.println("I am flying");
+			System.out.println(birdName+" am flying");
+			Solution.COUNT_FLY++;
 			break;
 		}
 		
@@ -58,11 +62,11 @@ class Bird extends Animal {
 		switch (birdName) {
 		case "Duck":
 			System.out.println("A duck can swim");
-			
+			Solution.COUNT_SWIM++;
 			break;
 		case "Fishes":
 			System.out.println("Fishes can swim");
-			
+			Solution.COUNT_SWIM++;
 			break;
 		default:
 			System.out.println(birdName+" can't swim.");
@@ -78,25 +82,24 @@ class Bird extends Animal {
 	}
 	
 	public void sing(String birdName, String neighbour) {
-		//super.sing(birdName, neighbour);
 		switch (birdName) {
 		case "Duck":
 			System.out.println("Quack, quack");
-			
+			Solution.COUNT_SING++;
 			break;
 		case "Chicken":
 			System.out.println("Cluck, cluck");
-			
+			Solution.COUNT_SING++;
 			break;
 		case "Rooster":
 			System.out.println("Cock-a-doodle-doo");
-			
+			Solution.COUNT_SING++;
 			break;
 		case "Parrot":
 			stayWith(neighbour, false);
 			
 			break;
-		
+				
 		default:
 			System.out.println(birdName+" don't sing.");
 			
@@ -106,12 +109,13 @@ class Bird extends Animal {
 		
 	}
 	
-	class Parrot extends Bird {
-		
-	}
+	
+	
 	
 	
 }
+
+
 
 class Fish extends Bird{
 	
@@ -131,12 +135,32 @@ class ClownFish extends Fish {
 	}
 }
 
-class Dolphin extends Bird {
+class Dolphin extends Animal {
+	
+	public Dolphin () {
+		
+		System.out.println();
+	}
+}
+
+class Buttefly extends Bird {
+	
+}
+class Caterpillar extends Bird {
 	
 }
 
 public class Solution {
+	
+	public static int COUNT_SING;
+	public static int COUNT_FLY;
+	public static int COUNT_WALK;
+	public static int COUNT_SWIM;
 	public static void main(String[] args) {
+		COUNT_SING = 0;
+		COUNT_FLY = 0;
+		COUNT_WALK = 0;
+		COUNT_SWIM = 0;
 		Bird bird = new Bird();
 		bird.walk("");
 		bird.fly("Duck");
@@ -153,5 +177,19 @@ public class Solution {
 		fish.swim("Fishes");
 		new Shark();
 		new ClownFish();
+		Buttefly buttefly  = new Buttefly();
+		buttefly.fly("Butterfly");
+		buttefly.sing("Butterfly", null);
+		
+		Caterpillar caterpillar = new Caterpillar();
+		caterpillar.fly("Caterpillar");
+		caterpillar.walk("");
+		
+		System.out.println("Animals can sing :"+COUNT_SING);
+		System.out.println("Animals can fly :"+COUNT_FLY);
+		System.out.println("Animals can swim :"+COUNT_SWIM);
+		System.out.println("Animals can sing :"+COUNT_SING);
 	}
+	
+
 }
